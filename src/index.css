@@ -2,4 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #000;
+  font-family: 'SF UI Text', 'SFUIText', -apple-system, BlinkMacSystemFont,
+    Helvetica Neue, Arial, sans-serif;
+  font-size: 16px;
 }
