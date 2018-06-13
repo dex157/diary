@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import { ThemeProvider } from 'styled-components'
+import theme from './theme'
+import Diary from 'components/Diary'
+import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <Diary />
+  </ThemeProvider>,
+  document.getElementById('root')
+)
+
+registerServiceWorker()
