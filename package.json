@@ -16,13 +16,18 @@
     "storybook":
       "start-storybook -p 9001 -c .storybook",
     "test":
-      "react-scripts test --env=jsdom",
-    "precommit": "pretty-quick --staged"
+      "react-scripts test --env=jsdom"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.7",
     "husky": "^1.0.0-rc.8",
     "prettier": "^1.13.4",
     "pretty-quick": "^1.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit":
+        "pretty-quick --staged"
+    }
   }
 }
