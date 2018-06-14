@@ -6,7 +6,7 @@ const Container = styled.header`
   align-items: center;
   background-color: #000000;
   display: flex;
-  height: 52px;
+  height: ${p => p.theme.headerHeight};
   justify-content: center;
   width: 100%;
 `

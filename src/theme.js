@@ -1,1 +1,3 @@
-export default {}
+export default {
+  headerHeight: '52px'
+}
