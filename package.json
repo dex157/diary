@@ -18,10 +18,12 @@
     "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
+    "@storybook/addon-viewport": "^3.4.7",
     "@storybook/react": "^3.4.7",
     "husky": "^1.0.0-rc.8",
     "prettier": "^1.13.4",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^1.6.0",
+    "storybook-addon-figma": "^0.1.0"
   },
   "husky": {
     "hooks": {
