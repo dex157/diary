@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2018",
-
+    "checkJs": true,
     "baseUrl": ".",
     "paths": {
       "~components/*": ["./src/components/*"],

@@ -2,8 +2,10 @@ import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
 import theme from '../src/theme'
 import { ThemeProvider } from 'styled-components'
+import moment from 'moment'
 import '../src/index.css'
 import './storybook.css'
+moment.locale('ru')
 
 const req = require.context('../src', true, /\.stories\.js$/)
 

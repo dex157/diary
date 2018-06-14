@@ -23,6 +23,7 @@
     "husky": "^1.0.0-rc.8",
     "prettier": "^1.13.4",
     "pretty-quick": "^1.6.0",
+    "react-moment-proptypes": "^1.6.0",
     "storybook-addon-figma": "^0.1.0"
   },
   "husky": {

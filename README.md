@@ -17,6 +17,7 @@
 - [prop-types](https://reactjs.org/docs/typechecking-with-proptypes.html)
 - [styled-components](https://www.styled-components.com/)
 - [storybook](https://storybook.js.org/)
+- [figma](https://www.figma.com/)
 - [husky](https://github.com/typicode/husky)
 - [prettier](https://prettier.io/)
 - [moment.js](https://momentjs.com/)
