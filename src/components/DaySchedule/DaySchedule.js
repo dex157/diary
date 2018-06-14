@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
-import { DaySchedule as DayScheduleData } from 'data'
+import { DaySchedule as DayScheduleData, Lesson } from 'data'
 import styled from 'styled-components'
 import moment from 'moment'
 import { capitalize } from 'helpers'
-import LessonComponent from 'components/Lesson'
+import LessonComponent, {
+  EmptyLesson as EmptyLessonComponent
+} from 'components/Lesson'
 
 class DaySchedule extends PureComponent {
   static propTypes = DayScheduleData.propType
@@ -13,7 +15,7 @@ class DaySchedule extends PureComponent {
   }
 
   render() {
-    const { date, lessons } = this.props
+    const { date } = this.props
 
     return (
       <DayScheduleContainer>
@@ -21,16 +23,21 @@ class DaySchedule extends PureComponent {
           <WeekDay>{capitalize(moment(date).format('dddd'))}</WeekDay>
           <Date>{moment(date).format('D MMMM')}</Date>
         </Header>
-        <Lessons>
-          {lessons.map((lesson, index, array) => (
-            <LessonComponent
-              key={index}
-              {...lesson}
-              isLast={index === array.length - 1}
-            />
-          ))}
-        </Lessons>
+        <Lessons>{this.renderLessons()}</Lessons>
       </DayScheduleContainer>
+    )
+  }
+
+  renderLessons() {
+    const { lessons } = this.props
+
+    return Lesson.prepeareLessonsForRender(lessons).map(
+      ({ lesson, isEmpty }, index, array) =>
+        React.createElement(isEmpty ? EmptyLessonComponent : LessonComponent, {
+          key: index,
+          isLast: index === array.length - 1,
+          ...lesson
+        })
     )
   }
 }

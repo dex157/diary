@@ -6,6 +6,7 @@ body {
   font-family: 'SF UI Text', 'SFUIText', -apple-system, BlinkMacSystemFont,
     Helvetica Neue, Arial, sans-serif;
   font-size: 17px;
+  font-weight: 300;
 }
 
 html,

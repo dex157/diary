@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Task from './task'
+import moment from 'moment'
 
 export default class Lesson {
   static propType = {
@@ -8,43 +9,68 @@ export default class Lesson {
     endTime: PropTypes.instanceOf(Date),
     tasks: PropTypes.arrayOf(PropTypes.shape(Task.propType)).isRequired
   }
+
+  static prepeareLessonsForRender(lessons) {
+    const result = []
+    const sortedLessons = [...lessons].sort((aLesson, bLesson) => {
+      if (!aLesson.startTime) {
+        return 1
+      } else if (!bLesson.startTime) {
+        return -1
+      }
+      const a = moment(aLesson.startTime)
+      const b = moment(bLesson.startTime)
+      return moment.min(a, b) === a ? -1 : 1
+    })
+
+    if (isAllLessonsWithoutTime(lessons)) {
+      result.push({
+        isEmpty: true,
+        lesson: { title: `8:00 до 23:00` }
+      })
+    }
+
+    sortedLessons.forEach((lesson, index, array) => {
+      if (index === 0) {
+        if (lesson.startTime && lesson.startTime.getHours() > 8) {
+          result.push({
+            isEmpty: true,
+            lesson: { title: `8:00 до ${lesson.startTime.getHours()}:00` }
+          })
+        }
+        result.push({ isEmpty: false, lesson })
+      } else {
+        const prevLesson = array[index - 1]
+        if (lesson.startTime != null) {
+          if (
+            lesson.startTime.getHours() - prevLesson.endTime.getHours() >=
+            1
+          ) {
+            result.push({
+              isEmpty: true,
+              lesson: {
+                title: `${prevLesson.endTime.getHours()}:00 до ${lesson.startTime.getHours()}:00`
+              }
+            })
+          }
+        } else {
+          if (prevLesson.endTime != null) {
+            result.push({
+              isEmpty: true,
+              lesson: {
+                title: `${prevLesson.endTime.getHours()}:00 до 23:00`
+              }
+            })
+          }
+        }
+        result.push({ isEmpty: false, lesson })
+      }
+    })
+
+    return result
+  }
 }
 
-let now = new Date()
-now.setMinutes(0)
-now.setSeconds(0)
-now.setMilliseconds(0)
-
-export const lessonsMock = [
-  {
-    title: 'Обществознание',
-    startTime: new Date(now.setHours(8)),
-    endTime: new Date(now.setHours(9)),
-    tasks: [{ title: '§341', isComplete: false, isRepeatable: true }]
-  },
-  {
-    title: 'Алгебра',
-    startTime: new Date(now.setHours(9)),
-    endTime: new Date(now.setHours(10)),
-    tasks: [
-      { title: '№313', isComplete: false, isRepeatable: true },
-      { title: '№231', isComplete: false, isRepeatable: true }
-    ]
-  },
-  {
-    title: 'Информатика',
-    startTime: new Date(now.setHours(10)),
-    endTime: new Date(now.setHours(11)),
-    tasks: [
-      { title: '№313', isComplete: false, isRepeatable: true },
-      { title: '№231', isComplete: false, isRepeatable: true },
-      { title: '№311', isComplete: false, isRepeatable: true }
-    ]
-  },
-  {
-    title: 'Английский',
-    startTime: new Date(now.setHours(12)),
-    endTime: new Date(now.setHours(13)),
-    tasks: []
-  }
-]
+function isAllLessonsWithoutTime(lessons) {
+  return !lessons.some(lesson => lesson.startTime != null)
+}
