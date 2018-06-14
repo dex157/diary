@@ -2,6 +2,7 @@
 
 - Проект без редакса, работаем с контекстом реакта
 - Запись стрима будет
+- Исходники будут
 - Подход разработки **component first**
 - Переосмысление [bem](https://ru.bem.info/methodology/) с css-in-js
 - Записывайтесь на курс
@@ -13,6 +14,7 @@
 
 - [react.js](https://reactjs.org/)
 - [create-react-app](https://github.com/facebook/create-react-app)
+- [prop-types](https://reactjs.org/docs/typechecking-with-proptypes.html)
 - [styled-components](https://www.styled-components.com/)
 - [storybook](https://storybook.js.org/)
 - [husky](https://github.com/typicode/husky)
