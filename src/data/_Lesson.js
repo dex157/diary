@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Task from './task'
+import Task from './Task'
 import moment from 'moment'
 
 export default class Lesson {

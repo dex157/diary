@@ -21,6 +21,7 @@ export const Cell = styled.div`
   height: 35px;
   line-height: 35px;
   padding-left: 7px;
+  white-space: nowrap;
 `
 
 export const Title = styled.p`
