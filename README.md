@@ -5,6 +5,7 @@
 - Переосмысление [bem](https://ru.bem.info/methodology/) с css-in-js
 - Записывайтесь на курс
   [react.js в loftscool](https://loftschool.com/course/react)
+- [ПТУ 1337](https://t.me/kkonstantinopolskiy)
 
 ---
 
