@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default class Task {
+export default class {
   static propType = {
     title: PropTypes.string.isRequired,
     isComplete: PropTypes.bool.isRequired,

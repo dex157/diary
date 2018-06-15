@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import Header from 'components/Header'
-import PageFold from 'components/PageFold'
+import Week from 'components/Week'
 import styled from 'styled-components'
 
 class Diary extends PureComponent {
@@ -8,15 +8,15 @@ class Diary extends PureComponent {
     return (
       <Fragment>
         <Header />
-        <PageFolderWrapper>
-          <PageFold />
-        </PageFolderWrapper>
+        <WeekWrapper>
+          <Week />
+        </WeekWrapper>
       </Fragment>
     )
   }
 }
 
-const PageFolderWrapper = styled.div`
+const WeekWrapper = styled.div`
   background: #000;
   width: 100%;
   height: calc(100% - ${p => p.theme.headerHeight});
